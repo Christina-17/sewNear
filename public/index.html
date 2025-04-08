@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In Page</title>
+    
+    <style>
+        form {
+            border: 2px solid gray;
+            height: auto;
+            width: 30%;
+            text-align: left;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h4, h2 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 3px;
+        }
+        select{
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 3px;
+
+        }
+        button {
+            display: block;
+            width: 85%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: midnightblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: navy;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            font-weight: bold;
+        }
+        .change {
+            color: rgba(0, 119, 255, 0.658);
+        }
+        .change:hover {
+            text-decoration: underline;
+        }
+        .end {
+            text-align: left;
+            margin-left: 25px;
+        }
+        .footer {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: small;
+            font-weight: bolder;
+            font-style: italic;
+        }
+        .link {
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">SewNear</h1>
+    <form id="loginForm">
+        <h4>Login</h4>
+        <h2>Name</h2>
+        <input type="text" id="loginname" placeholder="Enter your Name" required>
+
+        <h2>Mobile Number</h2>
+        <input type="number" id="loginMobile" placeholder="Enter Mobile Number" required>
+
+        <h2>Role</h2>
+        <select id="role" onchange="togglePasswordField()">
+            <option value="">Select Role</option>
+            <option value="user">user</option>
+            <option value="tailor">Tailor</option>
+        </select>
+        <div id="passwordContainer">
+        <h2  >Password</h2>
+        <input type="password" id="loginPassword" placeholder="Enter Password" required>
+       </div>
+        <p class="error" id="loginErrorMsg"></p>
+
+        <button class="loginButton" type="button" onclick="signin()">Login</button>
+       
+        <p class="end">
+            By creating an account, you agree to SewNear's <span class="change">Conditions of Use</span>
+            and <span class="change">Privacy Policy</span>
+        </p>
+        <p class="link">
+            Create an account <a href="http://127.0.0.1:5000/signup.html"><span class="change">Sign up</span></a>
+        </p>
+        <p class="footer">
+            © 1996-2024, SewNear.com, Inc. or its affiliates
+        </p>
+    </form>
+
+    <script>
+    function togglePasswordField() {
+    const role = document.getElementById("role").value;
+    const passwordContainer = document.getElementById("passwordContainer");
+    const passwordField = document.getElementById("loginPassword");
+
+    if (role === "tailor") {
+        passwordContainer.style.display = "none"; // Hide password field
+        passwordField.removeAttribute("required"); // Remove 'required' attribute
+        passwordField.setAttribute("disabled", "true"); // Disable password field
+        passwordField.value = ""; // Clear the password
+    } else {
+        passwordContainer.style.display = "block"; // Show password field
+        passwordField.removeAttribute("disabled"); // Enable password field
+        passwordField.setAttribute("required", "true"); // Make it required for customers
+    }
+}
+
+const signin = async () => {
+    const name = document.getElementById("loginname").value.trim();
+    const contact = document.getElementById("loginMobile").value.trim().toString();;
+    const role = document.getElementById("role").value;
+    const passwordField = document.getElementById("loginPassword");
+    const password = passwordField ? passwordField.value.trim() : "";
+
+    const errorMsg = document.getElementById("loginErrorMsg");
+    errorMsg.innerText = "";
+
+    // Validation check
+    if (!name || !contact || !role) {
+        errorMsg.innerText = "All fields are required!";
+        return;
+    }
+
+    let requestBody = {mobile:contact,password,role};
+    let apiUrl = "http://localhost:5000/auth/signin"; // Default for customers
+
+    if (role === "tailor") {
+        requestBody = { name, contact};
+        apiUrl = "http://localhost:5000/tailor/signin"; // Tailor login API
+    } else {
+        requestBody = {mobile:contact,password,role};
+        requestBody.password = password; // Customers need a password
+    }
+
+    console.log("Sending request to:", apiUrl);
+    console.log("Request body:", requestBody); // Debugging log
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestBody),
+        });
+
+        const data = await response.json();
+        console.log("API Response:", data);
+
+        if (response.ok) {
+            if (role === "tailor") {
+                localStorage.setItem("loginname", data.tailor.name);
+                localStorage.setItem("mobile", data.tailor.contact);
+                localStorage.setItem("role", "tailor");
+                window.location.href = "http://127.0.0.1:5000/dashboard.html"; // Redirect to tailor dashboard
+            } else {
+                localStorage.setItem("loginname", data.user.name);
+                localStorage.setItem("mobile", data.user.mobile);
+                localStorage.setItem("role", "user");
+                window.location.href = "http://127.0.0.1:5000/homepage/home.html"; // Redirect to customer dashboard
+            }
+            alert("Login successful!");
+        } else {
+            errorMsg.innerText = data.message;
+        }
+    } catch (error) {
+        console.error("Error logging in:", error);
+        errorMsg.innerText = "Something went wrong! Please try again.";
+    }
+};    
+</script>
+
+</body>
+</html>

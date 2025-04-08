@@ -1,0 +1,1150 @@
+<!---<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailor Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body{
+            margin: 0px;
+            z-index: 0;
+        }
+        .tailor-container {
+            width: 300px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .tailor-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+      
+   .custom-video {
+    width: 100%;
+    height: 500px;  
+    object-fit: cover; 
+    
+}
+.navbar{
+    position: relative;
+    z-index: 0;
+}
+.title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}       
+.title-navbar{
+    position: absolute;
+    top: 1px;
+    position: fixed;
+    padding-left: 15px;
+    font-size:13px;
+    z-index: 1;
+    background-color:rgba(10, 10, 9, 0.596);
+    width: 100%;
+    margin: 0px;
+    color: white;
+    display: flex;
+    list-style-type: none;
+   
+}
+
+.title-navbar h3{
+    margin-left: 5%;
+}
+.navbar h3{
+    position: absolute;
+    top: 75px;
+    left: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:50px;
+    width:550px;
+    color:gold;
+    ;
+}
+.title-navbar ul{
+    list-style-type:none;
+    margin-left: 750px;
+    display: flex;
+    gap: 80px;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="title-navbar">
+        <h1 class="title">SewNear</h1>
+        <ul class="title-navbar1">
+       <li>Home</li>
+        <li>FindTailor</li>
+        <li>MyOrders</li>
+        <li class=nav4 ><a href="file:///C:/Mini_Project/auth-app/public/dashboard.html" style=" text-decoration: none;list-style-type: none;color: white;"><i class="fa-solid fa-user"></i></a></i></li>
+    </ul>
+    </div>
+    <nav class="navbar">
+      <video class="custom-video" src="images/video1.mp4" muted  loop autoplay></video>
+      <h3>Where Style Meets Precision – Know Your Tailor!</h3>
+    </nav>
+ 
+
+    <div class="tailor-container">
+        <img id="tailorPhoto" src="images/defaulttailor.jpg">
+        <h2 id="tailorName"></h2>
+        <p><strong>Shop:</strong> <span id="shop"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
+        <p><strong>Contact:</strong> <span id="contact"></span></p>
+        <p><strong>WhatsApp:</strong> <span id="whatsapp"></span></p>
+        <p><strong>Specialization:</strong> <span id="specialization"></span></p>
+        <p><strong>Tailoring Type:</strong> <span id="tailoringType"></span></p>
+        <p><strong>Fabric Expertise:</strong> <span id="fabric"></span></p>
+        <p><strong>Price Range:</strong> ₹<span id="price"></span></p>
+        <p><strong>Working Hours:</strong> <span id="workingHours"></span></p>
+        <p><strong>Home Pickup:</strong> <span id="pickup"></span></p>
+        <p><strong>Express Delivery:</strong> <span id="express"></span></p>
+    </div>
+
+    <script>
+        
+
+
+        function getQueryParams() {
+            let params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get("name"),
+                shop: params.get("shop"),
+                address: params.get("address"),
+                contact: params.get("contact"),
+                whatsapp: params.get("whatsapp"),
+                specialization: params.get("specialization"),
+                tailoringType: params.get("tailoringType"),
+                fabric: params.get("fabric"),
+                price: params.get("price"),
+                workingHours: params.get("workingHours"),
+                pickup: params.get("pickup"),
+                express: params.get("express"),
+                photo: params.get("photo")
+            };
+        }
+
+        let tailor = getQueryParams();
+
+        
+      document.getElementById("tailorPhoto").src = tailor.photo ? decodeURIComponent(tailor.photo) : "images/defaulttailor.jpg";
+        document.getElementById("tailorName").textContent = tailor.name;
+        document.getElementById("shop").textContent = tailor.shop;
+        document.getElementById("address").textContent = tailor.address;
+        document.getElementById("contact").textContent = tailor.contact;
+        document.getElementById("whatsapp").textContent = tailor.whatsapp;
+        document.getElementById("specialization").textContent = tailor.specialization;
+        document.getElementById("tailoringType").textContent = tailor.tailoringType;
+        document.getElementById("fabric").textContent = tailor.fabric;
+        document.getElementById("price").textContent = tailor.price;
+        document.getElementById("workingHours").textContent = tailor.workingHours;
+        document.getElementById("pickup").textContent = tailor.pickup;
+        document.getElementById("express").textContent = tailor.express;
+    </script>
+
+</body>
+</html>---->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailor Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+   
+   
+    <style>
+       body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e8f0fe, #ffffff);
+            color: #333;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .profile-card {
+            width: 700px; /* Maintained width */
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: absolute;
+            left: 30px;
+            top:70px;
+            height: 690px;
+        }
+        .navbar h1{
+            position: absolute;
+            right: 20px;
+            width:60px;
+        }
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        .profile-card header {
+            background: linear-gradient(135deg, #ff7043, #ff9a3c);
+            height: 110px;
+        }
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin: -50px auto 0;
+            display: block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .profile-card h2 {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #ff7043;
+        }
+        .profile-card p {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .details {
+            padding: 20px;
+            display: flex; /* Use flex layout for two equal-width sections */
+            gap: 20px;
+        }
+        .main-details, .right-details {
+            flex: 1; /* Equal width for both sections */
+        }
+        .info-box {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-box i {
+            font-size: 1.5rem;
+            color: #ff7043;
+        }
+        .info-box div {
+            flex: 1;
+        }
+        .info-box strong {
+            font-size: 0.95rem;
+            display: block;
+        }
+        .book-now {
+            display: block;
+            padding: 15px;
+            text-align: center;
+            margin-bottom:60px;
+            margin-left: 300px;
+            border: none;
+            background: rgb(240, 181, 70);
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            
+        }
+        .book-now:hover {
+            background: rgb(239, 166, 32);
+            transform: scale(1.05);
+        }
+        body {
+            margin: 0;
+            font-family: jost,sans-serif;
+        }
+        .custom-video {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .title-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 10, 9, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+        .title-navbar h1 {
+            margin: 0;
+        }
+        .title-navbar ul {
+            display: flex;
+            gap: 40px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .title-navbar ul li {
+            cursor: pointer;
+        }
+        .tailor-details{
+            height:800px;
+            width: 100%;
+            border: 1px solid gray;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            
+        }
+
+    .prod-container{
+    width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    /*background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+    font-family: 'Arial', sans-serif;
+  }
+        /*body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f8ff, #ffffff);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }*/
+        .steps-section {
+           
+            margin-left: 60px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap; /* Makes it responsive for smaller screens */
+            padding: 20px;
+            flex-direction:row;
+            text-align: center;
+            max-width: 100%;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 250px; /* Adjust card width */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card i {
+            font-size: 3rem;
+            color: #ff7043;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        .star-rating {
+            display: flex;
+            direction: row;
+            margin: 20px;
+        }
+
+        .star {
+            font-size: 30px;
+            color: grey;
+            cursor: pointer;
+        }
+
+        .star.selected {
+            color: gold;
+        }
+
+        .star:hover {
+            color: gold;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            margin: 20px;
+            padding: 10px;
+        }
+
+        .sbutton {
+            padding: 10px 20px;
+            margin-top: 10px;
+            display: inline;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .sbutton:hover {
+            background-color: #45a049;
+        }
+        .review-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+    margin-left:20px;
+    
+}
+
+.review-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: calc(20% - 20px); /* Adjust width for three columns */
+    margin-bottom: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.review-item .rating {
+    font-size: 25px;
+    color: gold;
+}
+
+.review-item .review-text {
+    margin-top: 10px;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.review-text{
+ height: 100px;
+ 
+}
+.rating,.dlt-btn{
+    display: inline;
+}
+.dlt-btn{
+    margin: 20px;
+    width: 80px;
+    height: 40px;
+    padding: 5px;
+    margin-left: 30px;
+    background-color: rgb(112, 111, 111);
+    color: #f9f9f9;
+    border: 0px;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.dlt-btn:hover{
+    background-color: black;
+}
+
+
+/* Black overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Black background */
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+}
+
+/* Popup box */
+.popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.popup h2 {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+.popup label{
+    color: gray;
+    text-align: left;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.popup label {
+    display: block;
+    margin-top: 10px;
+}
+
+.popup select,
+.popup textarea {
+    width: 90%;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.popup button {
+    margin-top: 10px;
+    padding: 8px;
+    cursor: pointer;
+    color: white;
+    border: 0px;
+    margin: 10px;
+}
+ 
+.product-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+.product-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        width: 350px;
+        height: 400px;
+        text-align: center;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+    .product-card h3{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: rgb(111, 111, 111);
+        font-weight: 500;
+        font-size: 20px;
+      
+        bottom: 44px;
+        position: absolute;
+        left:16px;
+       
+    }
+    .product-card p{
+        color: rgb(110, 109, 109);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        bottom:17px;
+    
+        left:16px;
+        position: absolute;
+       
+    }
+    .product-card button{
+        width:350px;
+        height: 30px;
+        background-color:#007BFF;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+        padding: 5px;
+        border:0px;
+        border-radius: 2px;
+        bottom: 10px;
+        right:17px;
+        left:17px;
+        position: absolute;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+   
+  .addpro-container {
+   width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+
+  #uploadForm h2 {
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #uploadForm input[type="text"], 
+  #uploadForm input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+  }
+
+  #uploadForm input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+  #uploadForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 35px;
+    transition: background-color 0.3s;
+  }
+
+  #uploadForm button:hover {
+    background-color: #0056b3;
+  }
+    </style>
+</head>
+<body>
+
+    <div class="title-navbar">
+        <h1>SewNear</h1>
+        <ul>
+            
+            <li><a style="text-decoration: none;color:white;" href="http://127.0.0.1:5000/myorders1.html">MyOrders</a></li> 
+            <li><a href="http://127.0.0.1:5000/dashboard.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-user"></i></a></li>
+        </ul>
+    </div>
+
+    <!-- Background Video -->
+   
+   <div>
+         <nav class="navbar">
+        <video class="custom-video" src="images/video2.mp4" muted loop autoplay></video>
+        
+        
+    </nav>
+    <h1 style="text-align: center;position: absolute;top:420px;right: 50px;color:white;width: 600px;font-weight: 960;font-size: 50px;">Stitch Your Style with the Best Tailors – Book Now!</h1>
+  </div>
+<div class="profile-card">
+        <header></header>
+        <img  id="photoPreview" src="defaulttailor.jpg" alt="Tailor Photo">
+        <h2 id="tailorName"></h2>
+        <p>Expert in custom-tailored clothing</p>
+        <div class="details">
+            <!-- Main Details Section -->
+            <div class="main-details">
+                <div class="info-box">
+                    <i class="fas fa-store"></i>
+                    <div>
+                        <strong>Shop:</strong>
+                        <span id="shop"></span>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-tags"></i>
+                    <div>
+                        <strong>Price Range:</strong>
+                        ₹<span id="price"></span>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Contact:</strong>
+                        <span  id="contact"></span>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Address:</strong>
+                        <span id="address"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Right-Side Details Section -->
+            <div class="right-details">
+                <div class="info-box">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Working Hours:</strong>
+                        <span id="workingHours"></span>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-truck"></i>
+                    <div>
+                        <strong>Express Delivery:</strong>
+                        <span id="express"></span>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-hands-helping"></i>
+                    <div>
+                        <strong>Home Pickup:</strong>
+                        <span id="pickup"></span>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-tshirt"></i>
+                    <div>
+                        <strong>Fabric Expertise:</strong>
+                        <span id="fabric"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="book-now"  id="bookTailorBtn">Book Tailor</button>
+    </div>
+</div>
+
+ <!-- Steps Section -->
+ <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;text-align: center;font-size: 40px;">Steps to Get Started</h2>
+ <div class="steps-section">
+    <div class="card">
+        <i class="fas fa-search"></i>
+        <h3>Step 1: Search</h3>
+        <p>Find the best tailor by searching through our database based on your preferences.</p>
+    </div>
+    <div class="card">
+        <i class="fas fa-user-check"></i>
+        <h3>Step 2: Select</h3>
+        <p>Choose the tailor that matches your style and requirements from the list.</p>
+    </div>
+    <div class="card">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Step 3: Book</h3>
+        <p>Schedule an appointment or request services at your convenience.</p>
+    </div>
+    <div class="card">
+        <i class="fas fa-check-circle"></i>
+        <h3>Step 4: Confirm</h3>
+        <p>Get your confirmation instantly and prepare for your tailored experience.</p>
+    </div>
+</div>
+<!--Products-->
+<div class="prod-container">
+    <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;text-align: center;font-size: 40px;margin-top: 0px;">Products</h1>
+    <div id="product-list" class="product-container"><!-- Products will be displayed here dynamically --></div>
+    </div>
+<center>
+<h2 style="margin: 20px;text-align: center;font-size: 40px;font-family:Verdana, Geneva, Tahoma, sans-serif;">Customer Reviews</h2>
+   <div class="review-container" id="reviews">
+
+   </div>
+
+   <textarea id="review-text" name="review" placeholder="Enter your review here..." style="width: 600px;height: 180px;"></textarea>
+    
+    <form id="review-form">
+        
+        <div class="star-rating" style="display: inline;">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+      <button class="sbutton" type="submit">Submit Review</button>
+    </center>
+
+
+    <!-- Overlay Background -->
+<div id="popupOverlay" class="overlay">
+    <div class="popup">
+        <h2>Book Tailor</h2>
+        <label>Gender:</label>
+        <select id="gender" style="border: 2px solid black;">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label>Clothing Type:</label>
+        <select id="clothingType" style="border: 2px solid black;">
+            <option value="Shirt">Shirt</option>
+            <option value="Pants">Pants</option>
+            <option value="Suit">Suit</option>
+            <option value="Kurta">Kurta</option>
+            <option value="Dress">Dress</option>
+            <option value="Skirt">Skirt</option>
+            <option value="Blouse">Blouse</option>
+            <option value="Saree">Saree</option>
+            <option value="Custom">Custom</option>
+        </select>
+
+        <label>Special Instructions:</label>
+        <textarea id="orderDetails" placeholder="Optional" style="border: 2px solid black;"></textarea>
+
+        <button id="submitBooking" style="background-color: #75e37b;">Confirm Booking</button>
+        <button id="closePopup" style="background-color: rgb(241, 104, 104);">Cancel</button>
+    </div>
+</div>
+<footer style="
+  background-color: #333333;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+">
+  <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+  <p>
+    <a href="https://www.yourprivacypolicy.com" style="color: #007BFF; text-decoration: none;">Privacy Policy</a> |
+    <a href="https://www.yourterms.com" style="color: #007BFF; text-decoration: none;">Terms of Service</a>
+  </p>
+  <p>
+    Follow us: 
+    <a href="https://www.facebook.com" style="color: #007BFF; text-decoration: none;">Facebook</a> |
+    <a href="https://www.twitter.com" style="color: #007BFF; text-decoration: none;">Twitter</a> |
+    <a href="https://www.instagram.com" style="color: #007BFF; text-decoration: none;">Instagram</a>
+  </p>
+</footer>
+
+<script>
+        const name = localStorage.getItem("loginname");
+        const mobile = localStorage.getItem("mobile");
+        console.log(name);
+        let selectedRating = 0;
+
+        // Handle rating click
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = star.getAttribute('data-value');
+                stars.forEach(s => s.classList.remove('selected'));
+                for (let i = 0; i < selectedRating; i++) {
+                    stars[i].classList.add('selected');
+                }
+            });
+        });
+
+        // Function to load reviews
+        // Load existing reviews on page load
+function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    const reviewsContainer = document.getElementById('reviews');
+    const username=name;
+    reviewsContainer.innerHTML = ''; // Clear existing reviews
+    reviews.forEach(review => {
+        const reviewElement = document.createElement('div');
+        reviewElement.classList.add('review-item');
+        reviewElement.innerHTML = `
+            <div class=""><h3>${username}</h3></div>
+            <div class="review-text">${review.text}</div>
+            <div class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+            <button class="dlt-btn" onclick="deleteReview()">Delete</button>
+        `;
+        reviewsContainer.appendChild(reviewElement);
+    });
+}
+
+  // Function to delete a review
+function deleteReview(index) {
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    reviews.splice(index, 1); // Remove the review at the specified index
+    localStorage.setItem('reviews', JSON.stringify(reviews)); // Update localStorage
+    loadReviews(); // Reload the reviews
+
+}
+        // Load existing reviews on page load
+        loadReviews();
+
+        // Handle form submission
+        document.getElementById('review-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const reviewText = document.getElementById('review-text').value.trim();
+            if (reviewText && selectedRating > 0) {
+                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                reviews.push({
+                    rating: selectedRating,
+                    text: reviewText
+                });
+
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+
+                // Clear form
+                document.getElementById('review-text').value = '';
+                selectedRating = 0;
+                stars.forEach(star => star.classList.remove('selected'));
+
+                // Reload the reviews
+                loadReviews();
+            } else {
+                alert('Please enter a review and select a rating.');
+            }
+        });
+
+
+        function getQueryParams() {
+            let params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get("name"),
+                shop: params.get("shop"),
+                address: params.get("address"),
+                contact: params.get("contact"),
+                //whatsapp: params.get("whatsapp"),
+                //specialization: params.get("specialization"),
+                //tailoringType: params.get("tailoringType"),
+                fabric: params.get("fabric"),
+                price: params.get("price"),
+                workingHours: params.get("workingHours"),
+                pickup: params.get("pickup"),
+                express: params.get("express"),
+                photo: params.get("photo")
+               
+            };
+        }
+
+        let tailor = getQueryParams();
+
+        
+        
+        document.getElementById("tailorName").textContent = tailor.name;
+        document.getElementById("shop").textContent = tailor.shop;
+        document.getElementById("address").textContent = tailor.address;
+        document.getElementById("contact").textContent = tailor.contact;
+        //document.getElementById("whatsapp").textContent = tailor.whatsapp;
+        //document.getElementById("specialization").textContent = tailor.specialization;
+        //document.getElementById("tailoringType").textContent = tailor.tailoringType;
+        document.getElementById("fabric").textContent = tailor.fabric;
+        document.getElementById("price").textContent = tailor.price;
+        document.getElementById("workingHours").textContent = tailor.workingHours;
+        document.getElementById("pickup").textContent = tailor.pickup;
+        document.getElementById("express").textContent = tailor.express;
+        document.getElementById('photoPreview').src = tailor.photoSrc || "defaulttailor.jpg";
+  
+document.getElementById("bookTailorBtn").addEventListener("click", () => {
+    document.getElementById("popupOverlay").style.display = "flex";
+});
+
+// Close popup
+document.getElementById("closePopup").addEventListener("click", () => {
+    document.getElementById("popupOverlay").style.display = "none";
+});
+
+// Submit booking
+document.getElementById("submitBooking").addEventListener("click", async () => {
+    //const customerName = localStorage.getItem("loginname");
+    //const customerPhone = localStorage.getItem("mobile");
+
+    const customerName = name;
+    const customerPhone = mobile;
+   
+   
+    if (!customerName || !customerPhone) {
+        alert("Please enter your details to proceed with the booking.");
+        return;
+    }
+
+    const gender = document.getElementById("gender").value;
+    const clothingType = document.getElementById("clothingType").value;
+    const orderDetails = document.getElementById("orderDetails").value;
+
+    const tailorName = document.getElementById("tailorName").textContent;
+    const tailorContact = document.getElementById("contact").textContent;
+    const shopName = document.getElementById("shop").textContent;
+
+    try {
+        const response = await fetch("http://localhost:5000/tailor/book", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                customerName,
+                customerPhone,
+                tailorName,
+                tailorContact,
+                orderDetails,
+                shopName,
+                gender,
+                clothingType,
+            })
+        });
+
+        const data = await response.json();
+        alert(data.message);
+    } catch (error) {
+        alert("Error booking tailor: " + error.message);
+    }
+
+    // Close popup after booking
+    document.getElementById("popupOverlay").style.display = "none";
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+//const mobile = localStorage.getItem("mobile");
+
+const mobile = document.getElementById("contact").textContent;
+console.log(mobile);
+
+if (!mobile) {
+    console.error("❌ Mobile number not found in localStorage!");
+    return;
+}
+
+let tailorId = localStorage.getItem("tailorid");
+
+if (!tailorId || tailorId === "undefined" || tailorId === "null") {
+    try {
+        const response = await fetch(`http://localhost:5000/tailor/getTailorId?mobile=${mobile}`);
+        if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+
+        const data = await response.json();
+        console.log("📌 Backend Response:", data);
+
+        if (data.tailorId) {
+            tailorId = Array.isArray(data.tailorId) ? data.tailorId[0] : data.tailorId;
+            localStorage.setItem("tailorid", tailorId);
+            console.log("✅ Stored Tailor ID:", tailorId);
+        } else {
+            console.error("❌ Tailor ID not found in response.");
+            return;
+        }
+    } catch (error) {
+        console.error("❌ Error fetching Tailor ID:", error);
+        return;
+    }
+}
+//document.getElementById("tailorIdField").value = tailorId;
+
+// ✅ Fetch Products Once Tailor ID is Set
+fetchProducts();
+
+});
+const uploadForm = document.getElementById("uploadForm");
+
+if (uploadForm) {
+uploadForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(uploadForm);
+    let tailorId = localStorage.getItem("tailorid");
+
+    console.log("📌 Tailor ID before sending:", tailorId);
+
+    if (!tailorId || tailorId === "undefined") {
+        alert("❌ Tailor ID is missing. Please log in again.");
+        return;
+    }
+
+    formData.delete("tailorid");
+    formData.append("tailorid", tailorId.trim()); // Remove any extra spaces
+
+    try {
+        const response = await fetch("http://localhost:5000/tailor/add-product", {
+            method: "POST",
+            body: formData,
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert("✅ Product added successfully!");
+            uploadForm.reset();
+
+            // ✅ Fetch updated products after adding a new one
+            fetchProducts();
+        } else {
+            alert(`❌ Error: ${result.error}`);
+        }
+    } catch (error) {
+        console.error("❌ Error uploading product:", error);
+        alert("❌ Failed to upload product.");
+    }
+});
+}
+
+// ✅ Fetch Products
+async function fetchProducts() {
+try {
+    const tailorId = localStorage.getItem("tailorid");
+    if (!tailorId || tailorId === "undefined") {
+        console.error("❌ Tailor ID is missing!");
+        return;
+    }
+
+    const response = await fetch(`http://localhost:5000/tailor/get-products?tailorId=${tailorId}`);
+    if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+
+    const data = await response.json();
+    console.log("📌 Products received:", data);
+
+    // ✅ Call function to display products
+    displayProducts(data.products);
+
+} catch (error) {
+    console.error("❌ Error fetching products:", error);
+}
+}
+
+function displayProducts(products) {
+const productList = document.getElementById("product-list");
+
+if (!productList) {
+    console.error("❌ Element #productList not found!");
+    return;
+}
+
+productList.innerHTML = ""; // Clear previous content
+
+if (products.length === 0) {
+    productList.innerHTML = "<p>No products available.</p>";
+    return;
+}
+
+// ✅ Create product elements dynamically
+products.forEach(product => {
+    const productCard = document.createElement("div");
+    productCard.className = "product-card"; // Add CSS class for styling
+
+    productCard.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="product-image">
+        <h3>${product.name}</h3>
+        <p>Price Range: ${product.priceRange}</p>
+  
+    `;
+
+    productList.appendChild(productCard);
+});
+
+console.log("✅ Products displayed successfully.");
+}
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+  
+  
+</head>
+<body>
+    
+    <div class="orders-div" id="orders-div">
+        <div style="position: relative;"><h1 style="font-family:Verdana, Geneva, Tahoma, sans-serif;text-align: center;font-weight: 800;display :inline">Order Details</h1>
+          
+       <div id="orderList" class="order-list"></div>
+       <footer style="
+  background-color: #333333;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+">
+  <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+  <p>
+    <a href="https://www.yourprivacypolicy.com" style="color: #007BFF; text-decoration: none;">Privacy Policy</a> |
+    <a href="https://www.yourterms.com" style="color: #007BFF; text-decoration: none;">Terms of Service</a>
+  </p>
+  <p>
+    Follow us: 
+    <a href="https://www.facebook.com" style="color: #007BFF; text-decoration: none;">Facebook</a> |
+    <a href="https://www.twitter.com" style="color: #007BFF; text-decoration: none;">Twitter</a> |
+    <a href="https://www.instagram.com" style="color: #007BFF; text-decoration: none;">Instagram</a>
+  </p>
+</footer>
+    <script>
+        const name = localStorage.getItem("loginname"); 
+        const mobile = localStorage.getItem("mobile"); 
+        console.log(localStorage.getItem("loginname"));
+console.log(localStorage.getItem("mobile"));
+
+    
+    
+    //orders  of tailor
+    
+    async function fetchTailorOrders() {
+    const tailorName = name; // Change dynamically based on logged-in tailor
+    const response = await fetch(`http://localhost:5000/tailor/tailor-orders?tailorName=${encodeURIComponent(tailorName)}`);
+    const orders = await response.json();
+    
+    const orderList = document.getElementById("orderList");
+    orderList.innerHTML = ""; // Clear previous orders
+    
+    orders.forEach(order => {
+    const orderDiv = document.createElement("div");
+    orderDiv.id = `order-${order._id}`; // Unique ID for each order
+    
+    
+    orderDiv.innerHTML = `
+    <div style="max-width: 900px; margin: 20px auto; padding: 20px; background-color: #f7f8fc; border-radius: 15px; box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12); font-family: 'Poppins', sans-serif;">
+    
+    <div style="padding: 20px; border-radius: 12px; background: linear-gradient(to bottom right, #ffffff, #edf2f7); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); display: flex; justify-content: space-between; align-items: center; border: 1px solid #e4e7eb;">
+    <!-- Inline Order Details -->
+    <div style="display: flex; gap: 25px; align-items: center; flex-wrap: wrap;">
+        <span style="font-weight: 700; font-size: 1rem; color: #2a2a42;">Customer:</span>
+        <span style="color: #5b5b6e; font-size: 1rem;">${order.customerName}</span>
+    
+        <span style="font-weight: 700; font-size: 1rem; color: #2a2a42;">Contact:</span>
+        <span style="color: #5b5b6e; font-size: 1rem;">${order.customerPhone}</span>
+    
+        <span style="font-weight: 700; font-size: 1rem; color: #2a2a42;">Status:</span>
+        <span id="status-${order._id}" style="color: ${order.status === "Pending" ? "#f7c948" : order.status === "Active" ? "#3b82f6" : order.status === "Completed" ? "#10b981" : "#ef4444"}; font-size: 1rem; font-weight: 800;">
+            ${order.status}
+        </span>
+    </div>
+    
+    <div style="display: flex; gap: 12px;">
+        ${order.status === "Pending" ? `
+            <button style="padding: 10px 20px; background-color: #3b82f6; color: #ffffff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0px 4px 8px rgba(59, 130, 246, 0.3);"
+                onmouseover="this.style.backgroundColor='#2563eb'; this.style.transform='scale(1.05)';"
+                onmouseout="this.style.backgroundColor='#3b82f6'; this.style.transform='scale(1)';"
+                onclick="updateOrderStatus('${order._id}', 'Active')">Accept</button>
+            <button style="padding: 10px 20px; background-color: #ef4444; color: #ffffff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0px 4px 8px rgba(239, 68, 68, 0.3);"
+                onmouseover="this.style.backgroundColor='#dc2626'; this.style.transform='scale(1.05)';"
+                onmouseout="this.style.backgroundColor='#ef4444'; this.style.transform='scale(1)';"
+                onclick="updateOrderStatus('${order._id}', 'Rejected')">Reject</button>
+        ` : ""}
+        ${order.status === "Active" ? `
+            <button style="padding: 10px 20px; background-color: #10b981; color: #ffffff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0px 4px 8px rgba(16, 185, 129, 0.3);"
+                onmouseover="this.style.backgroundColor='#059669'; this.style.transform='scale(1.05)';"
+                onmouseout="this.style.backgroundColor='#10b981'; this.style.transform='scale(1)';"
+                onclick="updateOrderStatus('${order._id}', 'Completed')">Completed</button>
+        ` : ""}
+        
+            <button style="padding: 10px 20px; background-color: #ef4444; color: #ffffff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0px 4px 8px rgba(239, 68, 68, 0.3);"
+                onclick="deleteOrder('${order._id}')">Delete</button>
+      
+    
+    </div>
+    </div>
+    </div>
+    `;
+    
+    orderList.appendChild(orderDiv);
+    
+    });
+    }
+    
+    async function updateOrderStatus(orderId, status) {
+    await fetch(`http://localhost:5000/tailor/update-order-status`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ orderId, status })
+    });
+    
+    // ✅ Update the status text
+    document.getElementById(`status-${orderId}`).innerText = status;
+    
+    // ✅ Remove Accept/Reject buttons after updating
+    if (status === "Active") {
+    document.querySelector(`#order-${orderId} button:nth-child(1)`)?.remove(); // Remove "Accept"
+    document.querySelector(`#order-${orderId} button:nth-child(2)`)?.remove(); // Remove "Reject"
+    }
+    
+    // ✅ Show "Completed" button when order is Active
+    if (status === "Completed") {
+    document.querySelector(`#order-${orderId} button`)?.remove(); // Remove previous buttons
+    const orderDiv = document.getElementById(`order-${orderId}`);
+    }
+    }
+    
+    async function deleteOrder(orderId) {
+    await fetch(`http://localhost:5000/tailor/delete-order`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ orderId })
+    });
+    
+    // ✅ Remove the order from the UI
+    document.getElementById(`order-${orderId}`)?.remove();
+    }
+    
+    fetchTailorOrders();
+    
+   
+    
+    
+    window.onload =  fetchTailorOrders();
+
+  
+
+
+    </script>
+</body>
+</html>

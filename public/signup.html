@@ -1,0 +1,431 @@
+<!DOCTYPE html>     
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup Page</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='findtailor.css'>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        form {
+            border: 2px solid gray;
+            height: 600px;
+            width: 30%;
+            text-align: left;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h4, h2 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input, select {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 3px;
+        }
+        button {
+            display: block;
+            width: 85%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: midnightblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: navy;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            font-weight: bold;
+        }
+        .para2 {
+            margin-left: 30px;
+        }
+        .change {
+            color: rgba(0, 119, 255, 0.658);
+        }
+        .change:hover {
+            text-decoration: underline;
+        }
+        .end {
+            text-align: left;
+            margin-left: 25px;
+        }
+        .footer {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: small;
+            font-weight: bolder;
+            font-style: italic;
+        }
+
+        #openFormBtn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Popup Form Styling */
+.form-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgb(237, 231, 231);
+    border-radius: 8px;
+    width: 70%;
+    height: 700px;
+    
+}
+.form-container h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.form-container table{
+    display: inline;
+    margin: 19px;
+}
+
+
+
+.form-container input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 0 0;
+
+
+}
+
+/* Buttons */
+.form-buttons button {
+    margin: 40px;
+    height: 50px;
+    width:120px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+
+}
+
+.form-buttons button:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-buttons button:last-child {
+    background-color: red;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">SewNear</h1>
+    <form id="signupForm">
+        <h4>Create Account</h4>
+        <h2>Your Name</h2>
+        <input type="text" id="name" placeholder="First and Last Name" required>
+
+        <h2>Mobile Number</h2>
+        <input type="text" id="mobile" placeholder="Enter Mobile Number" required>
+
+        <h2>Password</h2>
+        <input type="password" id="password" placeholder="At least six characters" required>
+
+        <p class="error" id="errorMsg"></p>
+
+        <button type="button" onclick="signup()">Create Account</button>
+        <p class="para2">
+            Already have an account? <a href="index.html"> Sign in</a>
+        </p>
+        <button type="button" id="openFormBtn" onclick="saveTailor()">Create Account As Tailor</button>
+        <p class="end">
+            By creating an account or logging in, you agree to SewNear's <span class="change">Conditions of Use</span> and <span class="change">Privacy Policy</span>.
+        </p>
+        <p class="footer">
+            © 1996-2024, SewNear.com, Inc. or its affiliates
+        </p>
+
+    <div id="formPopup" class="form-container">
+            <h2 style="color:rgb(231, 105, 90);font-family: Verdana, Geneva, Tahoma, sans-serif;">Add Tailor Details</h2>
+          <table>
+            <tr>
+              <td><h3>FullName:</h3></td>
+             <td><input type="text" id="tailorName"></td>
+             </tr>
+             
+              <tr><td><h3>Address:</h3></td>
+             <td><input type="text" id="tailorAddress"></td>
+            </tr>
+             <tr><td><h3>Contact Number:</h3></td>
+             <td> <input type="text" id="tailorContact"></td>
+            </tr>
+            <tr>
+              <td><h3>WhatsApp Number:
+               </h3></td>
+              <td> <input type="text" id="tailorWhatsApp"></td>
+            </tr>
+             <tr><td><h3>Experience (Years):</h3></td>
+             <td><input type="number" id="tailorExperience"></td></tr>
+             <tr>
+              <td><h3>Shop Name:</h3></td>
+              <td><input type="text" id="shopName"></td>
+             </tr>
+             <tr>
+              <td> <h3>Google Maps Location (URL):</h3></td>
+              <td><input type="text" id="tailorMap"></td>
+            </tr>
+            </table>
+            <table>
+              
+              <tr>
+                <td><h3>Specialization:</h3></td>
+                <td> <select id="tailorSpecialization">
+                  <option value="Men">Men</option>
+                  <option value="Women">Women</option>
+                  <option value="Kids">Kids</option>
+                  <option value="All">All</option>
+              </select></td>
+              </tr>
+             <tr>
+              <td><h3>Tailoring Type:</h3></td>
+              <td><select id="tailorType">
+                <option value="Custom">Custom</option>
+                <option value="Alteration">Alteration</option>
+                <option value="Boutique">Boutique</option>
+                <option value="Bridal">Bridal</option>
+            </select></td>
+             </tr>
+             <tr>
+              <td><h3>Fabric Expertise:</h3></td>
+              <td> <select id="fabricExpertise">
+                <option value="Cotton">Cotton</option>
+                <option value="Silk">Silk</option>
+                <option value="Denim">Denim</option>
+                <option value="All">All</option>
+            </select></td>
+             </tr>
+             <tr><td><h3>Starting Price Range:</h3></td>
+             <td> <input type="text" id="tailorPrice"  ></td>
+            </tr>
+             <tr><td><h3>Working Hours:</h3></td>
+             <td><input type="text" id="tailorHours" style="width: 90%;"></td></tr>
+             <tr><td><h3>Home Pickup & Delivery:</h3></td>
+             <td><select id="homePickup">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+          </select></td></tr>
+             <tr><td><h3>Express Delivery Available:</h3></td>
+             <td><select id="expressDelivery">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+          </select></td></tr>
+          <tr><td><h3>Profile Photo:</h3></td>
+            <td><input type="file" id="tailorPhoto" accept="image/*" onchange="previewImage(event)">
+              <img id="photoPreview" src="" alt="Profile Preview" width="80" style="display: none; margin-top: 10px;"></td></tr>
+        </table>
+            
+            <div class="form-buttons">
+                <button onclick="saveTailor()">Save and Add</button>
+                <button onclick="closeForm()">Cancel</button>
+            </div>
+        </div>
+        
+<!-- <div id="tailorList"></div>Add this in your HTML if missing -->
+
+       
+    </form>
+
+    <script >
+        async function signup() {
+    const name = document.getElementById("name").value.trim();
+    const contact = document.getElementById("mobile").value.trim();
+    const password = document.getElementById("password").value;
+   const role = "user";  // ✅ Default role as 'user' (change to 'tailor' if needed)
+
+    /*const errorMsg = document.getElementById("errorMsg");
+    errorMsg.textContent = "";*/
+    console.log("Captured Values:", { name, contact, password, role });
+
+
+    if (!name || !contact || !password) {
+        errorMsg.textContent = "All fields are required!";
+        return;
+    }
+    if (password.length < 6) {
+        errorMsg.textContent = "Password must be at least 6 characters!";
+        return;
+    }
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/auth/signup", { // ✅ Correct endpoint
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name,contact, password,role})  // ✅ Include 'role'
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert(data.message);
+            window.location.href = "http://127.0.0.1:5000/index.html";  // ✅ Redirect to login or home page
+        } else {
+            errorMsg.textContent = data.message || "Signup failed!";
+        }
+    } catch (error) {
+        errorMsg.textContent = "Signup failed. Try again!";
+        console.error("Signup Error:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    let openFormBtn = document.getElementById("openFormBtn");
+
+    if (!openFormBtn) {
+        console.error("Error: openFormBtn not found!");
+        return;
+    }
+
+    openFormBtn.addEventListener("click", function () {
+        document.getElementById("formPopup").style.display = "block";
+    });
+});
+
+function closeForm() {
+    document.getElementById('formPopup').style.display = 'none';
+    document.querySelector('.overlay').style.display = 'none'; // Hide overlay
+    setTimeout(() => {
+        window.location.href = "findtailor.html";
+    }, 1000);
+}
+
+
+function previewImage(event) {
+    let file = event.target.files[0];
+    let photoPreview = document.getElementById('photoPreview');
+
+    if (file) {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            photoPreview.src = e.target.result;
+            photoPreview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    } else {
+        photoPreview.src = "defaulttailor.jpg";
+    }
+}
+
+async function saveTailor(editId = null) {
+    let name = document.getElementById('tailorName').value.trim();
+    let shop = document.getElementById('shopName').value.trim();
+    let address = document.getElementById('tailorAddress').value.trim();
+    let contact = document.getElementById('tailorContact').value.trim();
+
+    if (!name || !shop || !address || !contact) {
+        alert("Please fill in all required fields.");
+        return;
+    }
+
+    let tailor = {
+        name,
+        shop,
+        address,
+        contact,
+        whatsapp: document.getElementById('tailorWhatsApp').value.trim(),
+        specialization: document.getElementById('tailorSpecialization').value.trim(),
+        tailoringType: document.getElementById('tailorType').value.trim(),
+        fabric: document.getElementById('fabricExpertise').value.trim(),
+        price: document.getElementById('tailorPrice').value.trim(),
+        workingHours: document.getElementById('tailorHours').value.trim(),
+        pickup: document.getElementById('homePickup').value.trim(),
+        express: document.getElementById('expressDelivery').value.trim(),
+        photoSrc: document.getElementById("photoPreview").getAttribute("data-filename") || "defaulttailor.jpg"
+    };
+
+    try {
+        let url = editId ? `http://localhost:5000/tailor/editTailor/${editId}` : 'http://localhost:5000/tailor/add';
+        let method = editId ? 'PUT' : 'POST';
+
+        let response = await fetch(url, {
+            method: method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(tailor)
+        });
+
+        let result = await response.json();
+        alert(result.message);
+        closeForm();
+        displayTailors();
+    } catch (error) {
+        alert("Error saving tailor: " + error.message);
+    }
+}
+
+
+
+async function saveTailor() {
+    const tailor = {
+        name: document.getElementById("tailorName").value.trim(),
+        shop: document.getElementById("shopName").value.trim(),
+        address: document.getElementById("tailorAddress").value.trim(),
+        contact: document.getElementById("tailorContact").value.trim(),
+        whatsapp: document.getElementById("tailorWhatsApp").value.trim(),
+        specialization: document.getElementById("tailorSpecialization").value.trim(),
+        tailoringType: document.getElementById("tailorType").value.trim(),
+        fabric: document.getElementById("fabricExpertise").value.trim(),
+        price: document.getElementById("tailorPrice").value.trim(),
+        workingHours: document.getElementById("tailorHours").value.trim(),
+        pickup: document.getElementById("homePickup").value.trim(),
+        express: document.getElementById("expressDelivery").value.trim(),
+        photoSrc: document.getElementById("photoPreview").src 
+    };
+
+    const errorMsg = document.getElementById("errorMsg");
+    errorMsg.textContent = "";
+
+    if (!tailor.name || !tailor.contact || !tailor.shop) {
+        errorMsg.textContent = "Name, Shop, and Contact are required!";
+        return;
+    }
+
+    try {
+        let response = await fetch("http://localhost:5000/tailor/add", { 
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(tailor)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert(data.message);
+            window.location.reload();
+        } else {
+            errorMsg.textContent = data.message || "Failed to add tailor!";
+        }
+    } catch (error) {
+        errorMsg.textContent = "Error adding tailor. Try again!";
+        console.error("Tailor Save Error:", error);
+    }
+}
+
+
+    </script>
+    
+</body>
+</html>

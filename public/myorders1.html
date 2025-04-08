@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 35px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 90px;
+        
+        }
+        
+        h1 {
+            color: #333;
+        }
+        .order {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .order img {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .order-details1{
+            flex: 1;
+            text-align: left;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        
+        .order-details2{
+            flex: 2;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .back-button {
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #e68900;
+        }
+        .empty-message {
+            color: gray;
+            font-size: 18px;
+        }
+       
+        .title{
+            text-align: center;
+            margin-top: 50px;
+           position: absolute;
+           top: 1px;
+           position: fixed;
+            padding-left: 15px;
+            font-size:13px;
+             z-index: 1;
+            background-color:rgba(10, 10, 9, 0.596);
+            width: 100%;
+            margin: 0px;
+            color: white;
+            display: flex;
+            gap: 1100px;
+        }
+.title h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <div class="title" style="letter-spacing: 2px;">
+        <h1>SewNear</h1>
+        <i class="fa-solid fa-user" style="display: inline-block;"><h2 style="display: inline-block;width:auto;margin-top: 25px;font-size: 17px;" id="username"></h2></i>
+        </div>
+
+    <div class="container">
+        <h1>My Orders</h1>
+        <div id="ordersContainer"></div>
+        <button class="back-button" onclick="goHome()">Back to Home</button>
+    </div>
+    <footer style="
+    background-color: #333333;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 0.9em;
+  ">
+    <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+    <p>
+      <a href="https://www.yourprivacypolicy.com" style="color: #007BFF; text-decoration: none;">Privacy Policy</a> |
+      <a href="https://www.yourterms.com" style="color: #007BFF; text-decoration: none;">Terms of Service</a>
+    </p>
+    <p>
+      Follow us: 
+      <a href="https://www.facebook.com" style="color: #007BFF; text-decoration: none;">Facebook</a> |
+      <a href="https://www.twitter.com" style="color: #007BFF; text-decoration: none;">Twitter</a> |
+      <a href="https://www.instagram.com" style="color: #007BFF; text-decoration: none;">Instagram</a>
+    </p>
+  </footer>
+      <script>  
+const name = localStorage.getItem("loginname");
+const mobile = localStorage.getItem("mobile");
+console.log(name);
+        if (name) {
+            document.getElementById("username").innerText = name;
+          
+        } else {
+            // Redirect to login if no user data is found
+            window.location.href = "http://127.0.0.1:5000/index.html";
+        }
+
+
+        async function loadTailorOrders() {
+    try {
+    let response = await fetch(`http://localhost:5000/tailor/myorders?name=${name}`);
+    if (!response.ok) throw new Error(`Failed to fetch: ${response.statusText}`);
+    
+    let orders = await response.json(); // ✅ Correctly fetch orders!
+    
+    if (orders.length === 0) {
+    document.getElementById("ordersContainer").innerHTML = "<p class='empty-message'>No orders found.</p>";
+    return;
+    }
+    
+    orders.forEach((order) => {
+    let orderDiv = document.createElement("div");
+    orderDiv.classList.add("order");
+    orderDiv.id = `tailor-${order._id}`;  // ✅ Use 'order' not 'orders'
+    
+    
+    orderDiv.innerHTML = `
+        <img src="${order.photo || 'images/defaulttailor.jpg'}" alt="Tailor">
+        <div class="order-details1">
+            <p><strong>${order.tailorName}</strong></p>  <!-- ✅ Use 'order' -->
+            <p>Contact: ${order.tailorContact}</p>
+        </div>
+        <div class="order-details2">  
+            <p>Shop: ${order.shopName}</p>
+            <p>Status: ${order.status || "Pending"}</p>
+        </div>
+        <div>
+            <p>${new Date().toLocaleDateString()}</p>
+            <button onclick="removeOrder('${order._id}')" style="background-color:orange;color:white;border:0px;width:86px;height:40px;padding:5px;border-radius:20px;">
+                Delete
+            </button>
+        </div>
+    `;
+    
+    document.getElementById("ordersContainer").appendChild(orderDiv);
+    });
+    
+    } catch (error) {
+    alert("Failed to load orders. Please try again.");
+    }
+    }
+    
+    
+    function goHome() {
+    window.location.href = "http://127.0.0.1:5000/homepage/home.html";
+    }
+    async function removeOrder(orderId) {
+    try {
+    const response = await fetch(`http://localhost:5000/tailor/deleteorder/${orderId}`, { method: "DELETE" });
+    const data = await response.json();
+    
+    if (response.ok) {
+    alert("Order deleted successfully");
+    document.getElementById(`tailor-${orderId}`).remove();  // ✅ Remove order box from UI
+    } else {
+    console.error("Failed to delete order:", data.message);
+    }
+    } catch (error) {
+    console.error("Failed to delete order:", error);
+    alert(`Failed to delete order: ${error.message}`);
+    }
+    }
+
+    window.onload = loadTailorOrders;
+
+
+
+
+
+    </script>
+
+</body>
+</html>
+
+
+

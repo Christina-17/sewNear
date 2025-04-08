@@ -20,6 +20,12 @@ app.use((req, res, next) => {
 });
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 const authRoutes = require("./routes/authRoutes");
 const tailorRoutes = require("./routes/tailorroutes");
 

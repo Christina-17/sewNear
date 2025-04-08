@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src='script.js'></script>
+    <style>
+.navbar {
+    height: 110px; /* Increased height for better spacing */
+    background-color: midnightblue;
+    display: flex;
+    align-items: center; /* Align items vertically */
+    padding-left: 40px;
+}
+
+.title {
+    font-size: 28px;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: auto; /* Push UL to the right */
+}
+
+.navbar-list {
+    list-style-type: none;
+    display: flex;
+    align-items: center; /* Align list items */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    color: azure;
+    margin: 0;
+    padding: 0;
+    padding-top: 8px; /* Adjust vertical position */
+}
+
+.navbar-list li {
+    padding: 0 25px; /* Adjust spacing between items */
+    cursor: pointer;
+}
+
+        
+    </style>
+</head>
+<body style="margin: 0px;">
+   <!---Home Page -->
+   <div class="navbar">
+    <h1 class="title">SewNear</h1>
+      <ul class="navbar-list">
+       
+        <li class=nav2 ><a href="http://127.0.0.1:5000/findtailor.html" target="_blank" style="text-decoration: none;color:white;">Find Tailor</a></li>
+       
+          
+            <li class=nav4 ><a href="http://127.0.0.1:5000/dashboard.html"><i class="fa-solid fa-user"></i></a></i></li>
+      </ul>
+   </div>
+   <!---Search your tailor-->
+   <div class="search-bar">
+   
+   </div>
+   <!--Intro 1-->
+<div class="intro-container">
+    <div class="text-container">
+        <h1 class="text" style="font-family:Verdana, Geneva, Tahoma, sans-serif;color:midnightblue;font-weight: bold;">
+        </h1>
+        <button id="loginButton" class="loginButton" onclick="redirectToLogin()"><a href="http://127.0.0.1:5000/index.html" style="text-decoration: none;color: white;">Login</a></button>
+    </div>
+    <div><img class="img-container" src="images/img2.jpg">
+      </div>
+    </div>
+    <!---intro2-->
+<h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;text-align: center;font-weight: bold;margin:30px 0px;">Online Tailoring Services</h1> 
+    <div class="container1">
+      <div class="img-intro2-container">
+        <img  class="img-con1" src="images/img16.jpg">
+        <img  class="img-con2" src="images/img16.jpg">
+      </div>
+        <div class="text-container2">
+          <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">StitchPerfection – Your Tailor, Your Style!</h3>
+          <p  class="text-container1">
+            Ready to redefine your fashion game?
+           Seamlessly connect with expert tailors and bring your dream outfits to life with StitchPerfection. Whether it’s a custom-made dress, flawless alterations, or a designer ensemble, we ensure a perfect fit, every time.
+          </p>
+          <p>
+            Our platform lets you compare experienced tailors, book appointments effortlessly, and track your orders with ease.
+           Crafted for convenience, designed for style—your personalized tailoring experience is just a click away. Choose from a range of skilled professionals, compare prices, and enjoy the luxury of tailored perfection right at your doorstep.
+          </p>
+          <button class="find-tailor-btn">Find my tailor</button>
+        </div> 
+    </div>
+  </div> 
+  <hr style="background-color: rgba(128, 128, 128, 0.804);margin-top: 40px;"> 
+  <!--Explore more--> 
+  <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;text-align: center;font-weight: bold;">Explore More</h1>
+  <div class="explore-more">
+    <img class="exploremore-img" src="images/img7.webp"> 
+    <div class="exploremore-textcontainer">
+  <h2 class="exploremore-textcontainer">
+    "Your Style, Your Choice – Schedule a Fitting in Just a Click!"
+  </h2>
+  </div>
+</div> 
+<hr style="background-color: rgba(128, 128, 128, 0.804);margin-top: 30px;">
+<!---why choose us-->
+ <div class="chooseus-container">
+   <h1>Why SewNear?</h1>
+ </div>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="carousel-item active"  style="position: relative;">
+      <img src="images/img18.avif" alt="First slide" style="width:1600px">
+      <div class="carousel-caption"  style="position:absolute;right:60%;height:100%;bottom: 70%;width: auto;">
+        <h3 style="font-size:60px;font-family: Verdana, Geneva, Tahoma, sans-serif;margin-top: 300px;font-weight: bold;">"Find & Compare Tailors Near You"</h3>
+        <p>Choose from the best professionals based on experience & pricing.</p>
+        </div>
+        <div style="position:absolute;font-weight: bold;height:100%;width: auto;bottom: 50%;left: 68%;color:whitesmoke;">
+          <p style="font-size:60px;font-family: Verdana, Geneva, Tahoma, sans-serif;margin-top: 300px;font-weight: bold;text-align: center;">"Convenience at Your Doorstep"</p>
+        </div>
+    </div>
+    <div class="carousel-item" style="position: relative;" >
+      <img src="images/img17.jpg" alt="Second slide" style="width: 1600px;">
+      <div class="carousel-caption" style="position:absolute;top: 95%;left:25%;">
+        <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-size:90px;color:rgb(67, 65, 65);background-color: rgb(255, 192, 203,0.5);font-weight: bold;">Fast and Reliable Services</h3>
+        <p style="color:black;font-family: Verdana, Geneva, Tahoma, sans-serif;">Because Your Time Matters!</p>
+      </div>
+    </div>
+    <div class="carousel-item"  style="position: relative;">
+      <img src="images/img8.webp" alt="Third slide" style="margin-right: 600px;width:1600px">
+      <div class="carousel-caption"style="position:absolute;top:100%;bottom:20%;">
+        <h3 style="background-color: rgb(237, 127, 149,0.6);color:rgb(218, 219, 210);font-size: 120px;font-weight: bold;">"Perfect Fit"</h3>
+        <p></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+    <div class="symbols">
+      <div>
+        <img src="images/img12.webp" alt="" style="margin-bottom: 16px;">
+        <p>EASY BOOKING</p>
+      </div>
+      <div>
+        <img src="images/img13.avif" alt="">
+        <p style="margin-top: 65px;">CRUELTY FREE</p>
+      </div>
+     <div>
+      <img src="images/img14.avif" alt="">
+      <p style="margin-top: 65px;">QUALITY FIRST</p>
+     </div>
+  </div> 
+ 
+   <footer>
+    <div class="footer-content">
+      <p>Contact us: info@example.com | Phone: +91 123 456 7890</p>
+      <ul class="socials">
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+
+
+    <style>
+       /* body {
+            font-family: Arial, sans-serif;
+           
+            margin: 50px;
+        }*/
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0px;
+           
+            width: 100%;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+       /* .container {
+            width: 40%;
+            height:auto;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid gray;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+
+        }*/
+        h1 {
+            color: midnightblue;
+        }
+        p {
+            font-size: 18px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .logout-btn {
+            background-color:rgb(238, 84, 84);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-right: 30px;
+            border-radius: 5px;
+        }
+        .myorders-btn{
+            background-color:rgb(144, 144, 23);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .myorders-btn a{
+            text-decoration:none;
+            color:white;
+           
+        }
+        .myorders-btn:hover{
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .logout-btn:hover {
+          
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        body{
+            margin: 0px;
+            z-index: 0;
+        }
+       
+      
+   .custom-video {
+    width: 100%;
+    height: 500px;  
+    object-fit: cover; 
+    
+}
+.navbar{
+    position: relative;
+    z-index: 0;
+}
+.title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}       
+.title-navbar{
+    position: absolute;
+    top: 1px;
+    position: fixed;
+    padding-left: 15px;
+    font-size:13px;
+    z-index: 1;
+    background-color:rgba(10, 10, 9, 0.596);
+    width: 100%;
+    margin: 0px;
+    color: white;
+    display: flex;
+
+}
+
+
+.title-navbar h3{
+    margin-left: 5%;
+}
+.navbar h3{
+    position: absolute;
+    top: 265px;
+    left: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:80px;
+    text-align: center;
+    width:100%;
+    color:gold;
+
+}
+.title-navbar ul{
+    list-style-type:none;
+    margin-left: 750px;
+    display: flex;
+    gap: 110px;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+   /* General Styles */
+
+   
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            height:650px;
+        }
+
+        /* Header */
+        h1, h2 {
+            text-align: center;
+            color:midnightblue;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        /* Photo & Profile Section */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ebebeb;
+            padding-bottom: 20px;
+        
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #f3f3f3;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 0;
+            font-weight: 700;
+            text-align: left;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .profile-info p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 4px 0;
+            text-align: left;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        /* Details Section */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        /*.info-box {
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .info-box i {
+            color: #4CAF50;
+            margin-right: 100px;
+            font-size: 1.2rem;
+            
+          
+        }
+
+        .info-box strong {
+            color: #333;
+        }*/
+
+        
+    .info-box {
+        display: flex; /* Align icon and text horizontally */
+        align-items: center; /* Vertical alignment of icon and text */
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 15px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        line-height: 1.4;
+        gap: 10px; /* Space between the icon and text */
+    }
+
+    .info-box i {
+        flex-shrink: 0; /* Prevents icon from shrinking */
+        color:midnightblue;
+        font-size: 1.5rem; /* Consistent icon size */
+    }
+
+    .info-box div {
+        flex: 1; /* Ensures the text takes available space */
+    }
+
+    .info-box strong {
+        display: block; /* Ensures proper spacing for strong text */
+        color: #333;
+        margin-bottom: 3px; /* Adds space between title and content */
+    }
+
+
+        /* Button */
+        .logout-btn {
+            display: inline-block;
+            margin: 20px 10px;
+            padding: 12px 25px;
+            background-color: #ff5722;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .show-orders{
+            display: inline-block;
+            margin: 20px 10px;
+            padding: 12px 25px;
+            background-color:rgb(56, 185, 241);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease, transform 0.3s ease; 
+        }
+        .logout-btn:hover {
+            background-color: #e64a19;
+            transform: translateY(-2px);
+        }
+
+        .edit-btn, .save-btn {
+    background-color:rgb(98, 241, 98);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+
+}
+
+.edit-btn:hover, .save-btn:hover {
+    background-color:midnightblue;
+    transform: scale(1.05);
+}
+
+.edit-form {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+}
+
+.edit-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.edit-form input {
+    width: 100%;
+
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/*.orders-div{
+    
+    width:900px;
+    margin-left: 310px;
+    padding: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+.order-list p{
+  display: i;
+  
+}*/
+
+.product-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+        width:1030px;
+     
+      
+    }
+
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        width: 300px;
+        height: 400px;
+        text-align: center;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+    .product-card h3{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: rgb(126, 125, 125);
+        font-weight: 500;
+        font-size: 15px;
+      
+        bottom: 57px;
+        position: absolute;
+        left:16px;
+       
+    }
+    .product-card p{
+        color: rgb(126, 125, 125);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        bottom: 30px;
+        left:16px;
+        position: absolute;
+       
+    }
+    .product-card button{
+        width:200px;
+        height: 30px;
+        background-color:#007BFF;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+        padding: 5px;
+        border:0px;
+        border-radius: 2px;
+        bottom: 10px;
+        right:7px;
+        left:57px;
+        position: absolute;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+   
+  .addpro-container {
+   /*width: 1100px;
+  
+   margin:0px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;*/
+    max-width: 1000px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+           
+  }
+
+  #uploadForm h2 {
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #uploadForm input[type="text"], 
+  #uploadForm input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+  }
+
+  #uploadForm input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+  #uploadForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 35px;
+    transition: background-color 0.3s;
+  }
+
+  #uploadForm button:hover {
+    background-color: #0056b3;
+  }
+  .prod-container{
+    /*width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;*/
+
+
+           width:1400px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+
+    /*background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+   
+  }
+</style>
+  
+</head>
+<body>
+        <div class="title-navbar">
+            <h1 class="title">SewNear</h1>
+            <ul>
+                
+            </ul>
+        </div>
+    
+        <nav class="navbar">
+            <video class="custom-video" src="images/video3.mp4" muted loop autoplay></video>
+            <h3>Pick it. Stitch it. Own it!</h3>
+        </nav>
+    
+       
+    
+<div class="container" id="userSection">
+            <h2>Your Profile</h2>
+            <center><h1>Welcome, <span id="username"></span>!</h1></center>
+            <h2>Mobile Number: <span id="mobile"></span></h2>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+            <button class="myorders-btn"><a href="http://127.0.0.1:5000/myorders1.html">My Orders</a></button>
+</div>
+<div class="container" id="tailorSection">
+            <!-- Header -->
+            <h1>Tailor Dashboard</h1>
+            <h2>Manage Your Profile and Business Information</h2>
+    
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <img id="tailorPhoto" src="defaulttailor.jpg" alt="Tailor Photo" class="profile-photo">
+                <div class="profile-info">
+                    <h3 id="shop">Tailor Shop Name</h3>
+                    <p><strong>Specialization:</strong> <span id="specialization">Custom Tailored Clothing</span></p>
+                    <p><strong>Fabric Expertise:</strong> <span id="fabric">Silk, Cotton, Linen</span></p>
+                </div>
+            </div>
+    
+            <!-- Details Grid -->
+            <div class="details-grid">
+                <div class="info-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <strong>Address:</strong> <span id="address">123 Tailor Street, City</span>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-phone-alt"></i>
+                    <strong>Mobile:</strong> <span id="mobileTailor">+91-XXXXXXXXXX</span>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-whatsapp"></i>
+                    <strong>WhatsApp:</strong> <span id="whatsapp">+91-XXXXXXXXXX</span>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-tags"></i>
+                    <strong>Price Range:</strong> ₹<span id="price">500 - 2000</span>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-clock"></i>
+                    <strong>Working Hours:</strong> <span id="workingHours">9:00 AM - 9:00 PM</span>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-truck"></i>
+                    <strong>Pickup Service:</strong> <span id="pickup">Available</span>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>Express Service:</strong> <span id="express">Available</span>
+                </div>
+            </div>
+    
+            <!-- Logout Button -->
+            <button class="logout-btn" onclick="logout()">Logout</button>
+            <!-- Edit Button -->
+<button class="edit-btn" onclick="editTailorProfile()">Edit Profile</button>
+<button class="show-orders" onclick="showorder()"  id="show-orders">Show Orders</button>
+<!-- Edit Tailor Form (Initially Hidden) -->
+<div id="editTailorForm" class="edit-form">
+    <h2>Edit Tailor Profile</h2>
+    <label>Shop Name:</label>
+    <input type="text" id="editShop">
+
+    <label>Specialization:</label>
+    <input type="text" id="editSpecialization">
+
+    <label>Fabric Expertise:</label>
+    <input type="text" id="editFabric">
+
+    <label>Address:</label>
+    <input type="text" id="editAddress">
+
+    <label>Mobile:</label>
+    <input type="text" id="editMobileTailor">
+
+    <label>WhatsApp:</label>
+    <input type="text" id="editWhatsApp">
+
+    <button class="save-btn" onclick="saveTailorDetails()">Save</button>
+
+</div>
+   
+    <h1>Add Your Designs</h1>
+   <div class="addpro-container" style="display: flex;padding: 30px 40px;gap:15px;">
+    
+    <img src="./images/img22.jpg" style="height: auto;width:600px;margin-right: 30px;border-radius: 15px;">
+    <form id="uploadForm" enctype="multipart/form-data">
+        <h2 style="color:rgb(237, 64, 64);font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: 900;font-size:25px;" >Showcase your craftsmanship by adding your latest designs here!</h2>
+        <input type="text" name="tailorId" value="" id="tailorIdField" hidden>
+        <input type="text" name="name" placeholder="Product Name">
+        <input type="text" name="priceRange" placeholder="Price Range">
+        
+
+        <input type="file" name="image">
+        <button type="submit" id="addProductButton">Upload Product</button>
+    </form>
+</div>
+<h1 style="text-align: center;font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: 900;color: midnightblue;">Products</h1>
+   <div class="prod-container" style="width: 1010px;">
+      
+      <div id="productList" class="product-container"><!-- Products will be displayed here dynamically --></div>
+ </div>
+ 
+ 
+
+
+ <footer style="
+  background-color: #333333;
+  color: #ffffff;
+  padding: 20px;
+  width: auto;;
+  margin: 0px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+">
+  <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+  <p>
+    <a href="https://www.yourprivacypolicy.com" style="color: #007BFF; text-decoration: none;">Privacy Policy</a> |
+    <a href="https://www.yourterms.com" style="color: #007BFF; text-decoration: none;">Terms of Service</a>
+  </p>
+  <p>
+    Follow us: 
+    <a href="https://www.facebook.com" style="color: #007BFF; text-decoration: none;">Facebook</a> |
+    <a href="https://www.twitter.com" style="color: #007BFF; text-decoration: none;">Twitter</a> |
+    <a href="https://www.instagram.com" style="color: #007BFF; text-decoration: none;">Instagram</a>
+  </p>
+</footer>
+</div>
+
+
+
+
+
+</body>
+    <script>
+
+const name = localStorage.getItem("loginname"); 
+const mobile = localStorage.getItem("mobile"); 
+const role = localStorage.getItem("role"); 
+
+
+
+
+function showorder() {
+    window.location.href = "http://127.0.0.1:5000/tailororders.html";
+}
+
+
+if (!name || !role) {
+    window.location.href = "http://127.0.0.1:5000/index.html"; // Redirect if not logged in
+} else {
+    document.getElementById("username").innerText = name;
+    document.getElementById("mobile").innerText = mobile;
+
+    if (role === "user") {
+        // Show user section
+        document.getElementById("userSection").style.display = "block";
+        document.getElementById("tailorSection").style.display = "none";
+
+
+            fetch(`http://localhost:5000/auth/users`)
+.then(response => response.json())
+.then(users => {
+console.log("Fetched User Data:", users);
+
+// Find the logged-in user's data
+const user = users.find(user => user.name === name);
+
+if (user) {
+document.getElementById("mobile").innerText = user.contact;
+} else {
+document.getElementById("mobile").innerText = "N/A";
+}
+})
+.catch(error => console.error("Error fetching user details:", error));
+
+    } else if (role === "tailor") {
+        // Show tailor section
+        document.getElementById("userSection").style.display = "none";
+        document.getElementById("tailorSection").style.display = "block";
+         
+        fetch(`http://localhost:5000/tailor/tailors?name=${encodeURIComponent(name)}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("shop").innerText = data.shop || "N/A";
+                document.getElementById("address").innerText = data.address || "N/A";
+                document.getElementById("mobileTailor").innerText = data.contact || "N/A";
+                document.getElementById("whatsapp").innerText = data.whatsapp || "N/A";
+                document.getElementById("specialization").innerText = data.specialization || "N/A";
+                //document.getElementById("tailorType").innerText = data.tailoringType || "N/A";
+                document.getElementById("fabric").innerText = data.fabric || "N/A";
+                document.getElementById("price").innerText = data.price || "N/A";
+                document.getElementById("workingHours").innerText = data.workingHours || "N/A";
+                document.getElementById("pickup").innerText = data.pickup || "N/A";
+                document.getElementById("express").innerText = data.express || "N/A";
+                document.getElementById("tailorPhoto").src = data.photoSrc || "images/defaulttailor.jpg";
+            })
+            .catch(error => console.error("Error fetching tailor details:", error));
+   
+
+
+handletailordata();
+// Function to show edit form with current values
+function editTailorProfile() {
+document.getElementById("editTailorForm").style.display = "block";
+
+// Load existing values into form fields
+document.getElementById("editShop").value = localStorage.getItem("tailorShop") || "Tailor Shop Name";
+document.getElementById("editSpecialization").value = localStorage.getItem("tailorSpecialization") || "Custom Tailored Clothing";
+document.getElementById("editFabric").value = localStorage.getItem("tailorFabric") || "Silk, Cotton, Linen";
+document.getElementById("editAddress").value = localStorage.getItem("tailorAddress") || "123 Tailor Street, City";
+document.getElementById("editMobileTailor").value = localStorage.getItem("tailorMobile") || "+91-XXXXXXXXXX";
+document.getElementById("editWhatsApp").value = localStorage.getItem("tailorWhatsApp") || "+91-XXXXXXXXXX";
+}
+
+// Function to save updated details
+function saveTailorDetails() {
+const shopName = document.getElementById("editShop").value;
+const specialization = document.getElementById("editSpecialization").value;
+const fabric = document.getElementById("editFabric").value;
+const address = document.getElementById("editAddress").value;
+const mobile = document.getElementById("editMobileTailor").value;
+const whatsapp = document.getElementById("editWhatsApp").value;
+
+// Store updated values in localStorage (or send to backend)
+localStorage.setItem("tailorShop", shopName);
+localStorage.setItem("tailorSpecialization", specialization);
+localStorage.setItem("tailorFabric", fabric);
+localStorage.setItem("tailorAddress", address);
+localStorage.setItem("tailorMobile", mobile);
+localStorage.setItem("tailorWhatsApp", whatsapp);
+
+// Update the display
+document.getElementById("shop").innerText = shopName;
+document.getElementById("specialization").innerText = specialization;
+document.getElementById("fabric").innerText = fabric;
+document.getElementById("address").innerText = address;
+document.getElementById("mobileTailor").innerText = mobile;
+document.getElementById("whatsapp").innerText = whatsapp;
+
+// Hide form after saving
+document.getElementById("editTailorForm").style.display = "none";
+
+alert("Profile updated successfully!");
+
+
+}
+
+}}
+
+function handletailordata(){
+document.addEventListener("DOMContentLoaded", async () => {
+const mobile = localStorage.getItem("mobile");
+console.log(mobile);
+
+if (!mobile) {
+    console.error("❌ Mobile number not found in localStorage!");
+    return;
+}
+localStorage.removeItem("tailorId");
+let tailorId = localStorage.getItem("tailorId");
+
+if (!tailorId) {
+    try {
+        const response = await fetch(`http://localhost:5000/tailor/getTailorId?mobile=${mobile}`);
+        if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+
+        const data = await response.json();
+        console.log("📌 Backend Response:", data);
+
+        if (data.tailorId) {
+            tailorId = Array.isArray(data.tailorId) ? data.tailorId[0] : data.tailorId;
+            localStorage.setItem("tailorId", tailorId);
+            console.log("✅ Stored Tailor ID:", tailorId);
+        } else {
+            console.error("❌ Tailor ID not found in response.");
+            return;
+        }
+    } catch (error) {
+        console.error("❌ Error fetching Tailor ID:", error);
+        return;
+    }
+}
+
+// ✅ Set Tailor ID in Hidden Field
+document.getElementById("tailorIdField").value = tailorId;
+
+// ✅ Fetch Products Once Tailor ID is Set
+fetchProducts();
+});
+
+// ✅ Upload Product Form Submission
+const uploadForm = document.getElementById("uploadForm");
+
+if (uploadForm) {
+uploadForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(uploadForm);
+    let tailorId = localStorage.getItem("tailorId");
+
+    console.log("📌 Tailor ID before sending:", tailorId);
+
+    if (!tailorId || tailorId === "undefined") {
+        alert("❌ Tailor ID is missing. Please log in again.");
+        return;
+    }
+
+    formData.delete("tailorId");
+    formData.append("tailorId", tailorId.trim()); // Remove any extra spaces
+
+    try {
+        const response = await fetch("http://localhost:5000/tailor/add-product", {
+            method: "POST",
+            body: formData,
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert("✅ Product added successfully!");
+            uploadForm.reset();
+
+            // ✅ Fetch updated products after adding a new one
+            fetchProducts();
+        } else {
+            alert(`❌ Error: ${result.error}`);
+        }
+    } catch (error) {
+        console.error("❌ Error uploading product:", error);
+        alert("❌ Failed to upload product.");
+    }
+});
+}
+
+// ✅ Fetch Products
+async function fetchProducts() {
+try {
+    const tailorId = localStorage.getItem("tailorId");
+    if (!tailorId || tailorId === "undefined") {
+        console.error("❌ Tailor ID is missing!");
+        return;
+    }
+
+    const response = await fetch(`http://localhost:5000/tailor/get-products?tailorId=${tailorId}`);
+    if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+
+    const data = await response.json();
+    console.log("📌 Products received:", data);
+
+    // ✅ Call function to display products
+    displayProducts(data.products);
+
+} catch (error) {
+    console.error("❌ Error fetching products:", error);
+}
+}
+
+function displayProducts(products) {
+const productList = document.getElementById("productList");
+
+if (!productList) {
+    console.error("❌ Element #productList not found!");
+    return;
+}
+
+productList.innerHTML = ""; // Clear previous content
+
+if (products.length === 0) {
+    productList.innerHTML = "<p>No products available.</p>";
+    return;
+}
+
+// ✅ Create product elements dynamically
+products.forEach(product => {
+    const productCard = document.createElement("div");
+    productCard.className = "product-card"; // Add CSS class for styling
+
+    productCard.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="product-image">
+        <h3>${product.name}</h3>
+        <p>Price Range: ${product.priceRange}</p>
+         <button class="delete-btn" onclick="deleteProduct('${product._id}')">Delete</button>
+    `;
+
+    productList.appendChild(productCard);
+});
+
+console.log("✅ Products displayed successfully.");
+}
+
+// ✅ Call fetchProducts when the page loads
+//fetchProducts();
+async function deleteProduct(productId) {
+    const tailorId = localStorage.getItem("tailorId");
+
+    if (!tailorId) {
+        alert("❌ Tailor ID is missing. Please log in again.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:5000/tailor/delete-product/${productId}?tailorId=${tailorId}`, {
+            method: "DELETE",
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert("✅ Product deleted successfully!");
+            fetchProducts(); // Refresh products after deletion
+        } else {
+            alert(`❌ Error: ${result.error}`);
+        }
+    } catch (error) {
+        console.error("❌ Error deleting product:", error);
+        alert("❌ Failed to delete product.");
+    }
+}
+window.deleteProduct = deleteProduct;
+
+}
+// ✅ Logout Function
+function logout() {
+localStorage.clear();
+alert("Logged out successfully!");
+window.location.href = "http://127.0.0.1:5000/index.html";
+}
+
+    </script>
+    </body>
+</html>

@@ -1,0 +1,362 @@
+/*navigation bar*/
+body{
+    margin:0px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    
+}
+.custom-video {
+    width: 100%;
+    height: 400px;  
+    object-fit: cover; 
+  
+    
+    
+}
+.navbar .title{
+   color: white;
+}
+.find-tailor-heading{
+   
+    text-align: center;
+}
+.navbar{
+   width: 100%;
+
+}
+.navbar-list{
+    list-style-type: none;
+    margin-top: 120px;
+}
+.navbar-list li{
+    display: inline;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin:30px;
+    font-weight: 300;
+    font-size: 25px;
+    color:white;
+    text-decoration: none;
+}
+.navbar-list li:hover{
+    border: 2px solid  black;
+    padding: 5px;
+}
+.title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.find-tailor-heading{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  top:7%;
+  margin-left:25px ;
+  color: white;
+  font-weight: bold;
+  font-size:70px;
+  width: 60%;
+}
+.search-bar{
+    margin: 10px;
+    padding: 20px;
+    width:800px;
+    margin-left: 150px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.add-tailor img{
+    margin-top: 30px;
+    margin-left: 50px;
+    height: 500px;
+}
+.add-tailor{
+    display: flex;
+}
+.add-tailor-text{
+    text-align: center;
+    margin-top: 100px;
+    width: 40%;
+    margin-left: 20px;
+}
+.add-tailor-text h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 10px;
+    color:rgb(168, 72, 72);
+}
+.add-tailor-text p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+}
+.add-tailor-text button{
+    width: 120px;
+    height: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+    background-color: rgb(234, 91, 91);
+    border-radius: 25px;
+
+}
+#formPopup {
+    position: fixed; /* Ensures it stays on top */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensures it appears above everything */
+    display: none; /* Hide initially */
+}
+
+.tailor-box {
+    position: relative; /* Ensures tailor boxes don't overlap */
+    z-index: 1; /* Keeps tailor list below the popup */
+}
+
+.overlay {
+    position: fixed;
+    bottom: 2.5%;
+    left: 25%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adds a semi-transparent background */
+    z-index: 999; /* Below popup, above other content */
+    display: none;
+}
+
+
+
+/* Button Styling */
+#openFormBtn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Popup Form Styling */
+.form-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgb(237, 231, 231);
+    border-radius: 8px;
+    width: 70%;
+    height: 700px;
+    
+}
+.form-container h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.form-container table{
+    display: inline;
+    margin: 19px;
+}
+
+
+
+.form-container input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 0 0;
+
+
+}
+
+/* Buttons */
+.form-buttons button {
+    margin: 40px;
+    height: 50px;
+    width:120px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+
+}
+
+.form-buttons button:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-buttons button:last-child {
+    background-color: red;
+    color: white;
+}
+
+
+
+.edit-btn {
+    background-color:whitesmoke;
+    color: black;
+    border: 1px solid  #3ee665;
+}
+.edit-btn:hover{
+    background-color: #3ee665;
+}
+
+
+.delete-btn {
+    background-color:whitesmoke;
+    color:black;
+    border: 1px solid  rgb(244, 76, 76);
+}
+.tailor-details p{
+    text-align: left;
+    margin: 27px;
+
+}
+.tailor-btn button{
+   
+    margin:30px 10px 5px 0px;
+    height: 40px;
+    width: 120px;
+    font-size: 15px;
+    border-radius: 20px;
+    
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 100px;
+   
+   
+  }
+  .carousel p{
+    font-size: 19px;
+  }
+  
+  .card{
+    width: 500px;
+    height: 500px;
+    margin: 0 10px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: transform 0.5s, z-index 0.5s;
+    
+  }
+ .carousel img{
+    width: 500px;
+    height:auto;
+    padding: 20px;
+    
+ }
+  
+  .card-left {
+    transform: scale(0.9);
+    z-index: 1;
+  }
+  
+  .card-center {
+    transform: scale(1.1);
+    z-index: 3;
+  }
+  
+  .card-right {
+    transform: scale(0.9);
+    z-index: 1;
+  }
+  .dist{
+    color: rgb(150, 148, 148);
+    margin: 20px;
+  }
+ 
+.tailor-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns per row */
+    gap: 10px; /* Space between grid items */
+   
+}
+
+
+
+  .tailor-content {
+        display: flex;
+        flex-wrap: wrap;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        width: 700px;
+        margin: 20px;
+      
+    }
+    .tailor-content:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    .tailor-img {
+        flex: 1;
+        text-align: center;
+        background-color: #f7f9fc;
+        padding: 20px;
+    }
+    .tailor-img img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #007bff;
+    }
+    .tailor-details {
+        flex: 2;
+        padding: 20px;
+        color: #555;
+    }
+    .tailor-details p {
+        margin: 5px 0;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    .tailor-details p strong {
+        color: #333;
+    }
+    .tailor-btn {
+        margin-top: 10px;
+        display: flex;
+        text-align: center;
+        gap: 20px;
+        width: 320px;
+    }
+    .tailor-btn p{
+       padding-top: 35px; 
+       
+    }
+    .tailor-btn .view-btn {
+        background: #007bff;
+        color: white;
+        padding: 3px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        
+        margin-right: 0px;
+        transition: background 0.3s ease;
+    }
+    .tailor-btn .view-btn:hover {
+        background: #0056b3;
+    }
+
+
+
+    .unavailable {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+    .view-btn:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+    }
+    
+   

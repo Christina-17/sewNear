@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet'  media='screen' href='findtailor.css'>
+    <script src='findtailor.js' defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body class>
+    <!--Navigation bar-->
+    <div class="navbar" style="padding: 0px;">
+        <img src="./images/img23.jpg" style="width:100%;height:600px;position: relative;">
+        <h1 class="title" style="position: absolute;top:10px;margin-left: 30px;font-weight: 900;">SewNear</h1>
+          <div class="find-tailor-heading" style="position: absolute;top: 220px;color: #eb351d;left:10%; width: 1200px;">
+               <p>Find the Best Tailors Near You – Compare Experience, Cost & Reviews</p>
+          </div>
+       </div>
+       <!---Search your tailor-->
+       <div class="add-tailor">
+          <div><img src="images/img1.webp"></div>
+          <div class="add-tailor-text">
+            <h1 style="font-weight: 900;">Join Our Network of Expert Tailors!</h1>
+            <p style="margin-top: 50px;">"Are you a skilled tailor looking to connect with more customers? Add your profile today and let customers in your area find you easily!"</p>
+        
+          </div>
+       </div>
+
+       <!--carousel-->
+       <div class="carousel">
+        <div class="card card-left">
+          <img src="./images/img22.jpg" alt="Product 1">
+          <h3>Tailoring at Your Doorstep</h3>
+          <p>Stylish and trendy outfit for any occasion.</p>
+         
+        </div>
+        <div class="card card-center">
+          <img src="./images/img3.jpg" alt="Product 2">
+          <h3>Expert Tailors, Perfect Fits</h3>
+          <p>Comfortable and elegant design for your style.</p>
+          
+        </div>
+        <div class="card card-right">
+          <img src="./images/img20.jpg" alt="Product 3">
+          <h3>Compare, Choose, Save!</h3>
+          <p>Perfect for daily wear with a modern twist.</p>
+         
+        </div>
+      </div>
+      
+      
+       <header>
+        <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color:rgb(227, 99, 64);margin-top: 60px;text-align: center;font-weight: 900;">Find Your Perfect Tailor</h1>
+    </header>
+   <div class="search-bar">
+    <input type="search" id="searchBar" class="search-bar" placeholder="Search your Tailor!">
+   </div>
+  
+   <div id="map" style="height: 400px; width: 90%; margin-top: 20px;margin-left: 70px;border: gray 2px solid;padding: 10px;"></div>
+   <p id="distance" style="font-weight: bold; color: #e36440; margin-top: 10px;"></p>
+   <div>
+    
+<!-- Popup Form -->
+  <div id="formPopup" class="form-container">
+      <h2 style="color:rgb(231, 105, 90);font-family: Verdana, Geneva, Tahoma, sans-serif;">Add Tailor Details</h2>
+    <table>
+      <tr>
+        <td><h3>FullName:</h3></td>
+       <td><input type="text" id="tailorName"></td>
+       </tr>
+       
+        <tr><td><h3>Address:</h3></td>
+       <td><input type="text" id="tailorAddress"></td>
+      </tr>
+       <tr><td><h3>Contact Number:</h3></td>
+       <td> <input type="text" id="tailorContact"></td>
+      </tr>
+      <tr>
+        <td><h3>WhatsApp Number:
+         </h3></td>
+        <td> <input type="text" id="tailorWhatsApp"></td>
+      </tr>
+       <tr><td><h3>Experience (Years):</h3></td>
+       <td><input type="number" id="tailorExperience"></td></tr>
+       <tr>
+        <td><h3>Shop Name:</h3></td>
+        <td><input type="text" id="shopName"></td>
+       </tr>
+       <tr>
+        <td> <h3>Google Maps Location (URL):</h3></td>
+        <td><input type="text" id="tailorMap"></td>
+      </tr>
+      </table>
+      <table>
+        
+        <tr>
+          <td><h3>Specialization:</h3></td>
+          <td> <select id="tailorSpecialization">
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+            <option value="Kids">Kids</option>
+            <option value="All">All</option>
+        </select></td>
+        </tr>
+       <tr>
+        <td><h3>Tailoring Type:</h3></td>
+        <td><select id="tailorType">
+          <option value="Custom">Custom</option>
+          <option value="Alteration">Alteration</option>
+          <option value="Boutique">Boutique</option>
+          <option value="Bridal">Bridal</option>
+      </select></td>
+       </tr>
+       <tr>
+        <td><h3>Fabric Expertise:</h3></td>
+        <td> <select id="fabricExpertise">
+          <option value="Cotton">Cotton</option>
+          <option value="Silk">Silk</option>
+          <option value="Denim">Denim</option>
+          <option value="All">All</option>
+      </select></td>
+       </tr>
+       <tr><td><h3>Starting Price Range:</h3></td>
+       <td> <input type="range" id="tailorPrice" min="Rs.0" max="Rs.100000" ></td>
+      </tr>
+       <tr><td><h3>Working Hours:</h3></td>
+       <td><input type="text" id="tailorHours" style="width: 90%;"></td></tr>
+       <tr><td><h3>Home Pickup & Delivery:</h3></td>
+       <td><select id="homePickup">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select></td></tr>
+       <tr><td><h3>Express Delivery Available:</h3></td>
+       <td><select id="expressDelivery">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select></td></tr>
+    <tr><td><h3>Profile Photo:</h3></td>
+      <td><input type="file" id="tailorPhoto" accept="image/*" onchange="previewImage(event)">
+        <img id="photoPreview" src="" alt="Profile Preview" width="80" style="display: none; margin-top: 10px;"></td></tr>
+  </table>
+      
+      <div class="form-buttons">
+          <button id="saveTailorBtn"  onclick="saveTailor()">Save and Add</button>
+          <button  class="overlay" onclick="closeForm()">Cancel</button>
+      </div>
+  </div>
+
+  <!-- Display Added Tailors -->
+  <div class="tailor-list" id="tailorList"></div>
+  <footer style="
+  background-color: #333333;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+">
+  <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+  <p>
+    <a href="https://www.yourprivacypolicy.com" style="color: #007BFF; text-decoration: none;">Privacy Policy</a> |
+    <a href="https://www.yourterms.com" style="color: #007BFF; text-decoration: none;">Terms of Service</a>
+  </p>
+  <p>
+    Follow us: 
+    <a href="https://www.facebook.com" style="color: #007BFF; text-decoration: none;">Facebook</a> |
+    <a href="https://www.twitter.com" style="color: #007BFF; text-decoration: none;">Twitter</a> |
+    <a href="https://www.instagram.com" style="color: #007BFF; text-decoration: none;">Instagram</a>
+  </p>
+</footer>
+
+  <script>
+ 
+  </script>
+   </div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+.nav1:hover{
+  text-decoration: underline;
+}
+.nav2:hover{
+  text-decoration: underline;
+}
+.nav3:hover{
+  text-decoration: underline;
+}
+.nav4:hover{
+  text-decoration: underline;
+}
+.search-bar{
+    margin: 10px;
+    padding: 20px;
+    width:800px;
+    margin-left: 150px;
+
+}
+.search-bar ::placeholder{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+}
+.intro1{
+    width: 52%;
+    height: 60%;
+    margin-left: 726px;
+}
+footer {
+    background-color:midnightblue;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  /* intro1*/
+  .intro-container {
+    display: grid;
+    grid-template-columns:500px 500px;
+    align-items: center;
+    gap: 20px; /* Space between the image and the text */
+  }
+  
+  .img-container{
+     height: 500px; 
+     margin-left: 200px;
+     border-radius: 10px;
+       /* Ensures the image scales properly */
+  }
+  
+  .text-container {
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    justify-content: center;
+    height: 400px;
+    width: 700px; 
+    text-align:center;
+   
+  }
+  .loginButton{
+    background-color: midnightblue;
+    color: white;
+    padding:20px ;
+    width: 150px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+ .loginButton:hover{
+    color: midnightblue;
+    opacity: 1s;
+}
+/*intro 2*/
+.container1{
+   
+            background-image:url("images/img11.jpg");
+            background-size: cover; /* Ensure the image covers the entire container */
+           background-position:left; /* Center the image */
+           background-repeat: no-repeat; /* Prevent the image from repeating */
+            height: 600px; /* Full height */
+            width: 1200;
+            display: flex;
+           
+            justify-content: center;
+            align-items: center;
+            margin: 0px 20px;
+            
+            border-radius: 20px ;
+  }
+    
+.img-con1,.img-con2{
+    height: 400px;
+  }
+.text-container2 h3{
+    
+    text-decoration: underline;
+    text-align: center;
+    margin-right: 60px;
+    
+}
+.text-container2 p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   
+}
+
+
+.find-tailor-btn{
+  background-color: midnightblue;
+    color: white;
+    padding:20px ;
+    width: 250px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-left: 200px;margin-top: 30px;
+}
+.img-intro2-container{
+  display: flex;
+  margin:20px;
+  
+}
+.explore-more img{
+  height: 700px;
+  margin-left: 150px;
+  
+}
+.explore-more{
+  position: relative;
+}
+.exploremore-textcontainer{
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 800;
+  font-size:70px;
+  width: 900px;
+}
+.chooseus-container h1{
+ 
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 30px 0px;
+}
+/*carousel*/
+.carousel-inner{
+height:600px;
+ 
+}
+.carousel-item{
+  height: 300px;
+  width: 500px;
+}
+.symbols{
+  margin-left: 400px;
+  display: flex;
+}
+.symbols div{
+  margin: 70px;
+ 
+}
+.symbols p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size:small;
+  color: midnightblue;
+}
+
+ .footer-content p {
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .socials {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .socials li {
+    display: inline;
+    margin: 0 10px;
+  }
+  
+  .socials li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .socials li a:hover {
+    text-decoration: underline;
+  }
+  
+
+  

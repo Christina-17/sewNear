@@ -20,12 +20,6 @@ app.use((req, res, next) => {
 });
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static("public"));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
 const authRoutes = require("./routes/authRoutes");
 const tailorRoutes = require("./routes/tailorroutes");
 
@@ -38,7 +32,7 @@ app.use("/uploads", express.static("uploads"));
 app.use(express.static(path.join(__dirname, "public"))); 
 app.use(express.static(path.join(__dirname, "public")));  
 
-mongoose.connect("mongodb://localhost:27017/sewNearDB", {
+mongoose.connect( "mongodb+srv://christinasadhasivam2005:fokQuN7wBeWKFIT8@cluster0.h2kqqex.mongodb.net/sewNearDB?retryWrites=true&w=majority&appName=Cluster0", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log("MongoDB Connected"))
